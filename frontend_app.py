@@ -25,7 +25,7 @@ model_choice = st.sidebar.selectbox('Choose a model', ('Gaussian Process Regress
 
 # Function to make predictions with FastAPI (GPR)
 def predict_with_gpr(inputs):
-    url = "http://127.0.0.1:8000/predict/gpr/"
+    url = "https://predicting-house-prices-using-fastapi.onrender.com/predict/gpr/"
     response = requests.post(url, json=inputs)
     if response.status_code == 200:
         return response.json()['predicted_price']
@@ -35,7 +35,7 @@ def predict_with_gpr(inputs):
 
 # Function to make predictions with FastAPI (Prophet)
 def predict_with_prophet(periods):
-    url = "http://127.0.0.1:8000/predict/prophet/"
+    url = "https://predicting-house-prices-using-fastapi.onrender.com/predict/prophet/"
     response = requests.post(url, json={"periods": periods})
     if response.status_code == 200:
         return response.json()
