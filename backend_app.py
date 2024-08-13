@@ -4,6 +4,7 @@ import joblib
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from prophet import Prophet
+import uvicorn
 
 app = FastAPI()
 
@@ -73,8 +74,7 @@ async def predict_prophet(data: ProphetInput):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-import uvicorn
 
 if __name__ == "__main__":
     # For local development, reload=True is useful
-    uvicorn.run("main:app", host="0.0.0.0", port=10000, reload=True)
+    uvicorn.run("main:backend_app", host="0.0.0.0", port=10000, reload=True)
